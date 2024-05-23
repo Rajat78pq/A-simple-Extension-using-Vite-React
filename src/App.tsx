@@ -1,33 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Axios from 'axios';
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [resData, setresData] = useState();
+
+  const getData = async () =>{
+     try {
+      const responseData = await Axios.get("http://localhost:3000/msg");
+    const res = responseData.data.message;
+    setresData(res);
+    console.log(res);
+     } catch (error) {
+      console.log(`front error ${error}`);
+     }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+       <div className='out'>
       <h1>Rajat Extension</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <button onClick={getData}>Click me!</button>
+      <h3>{resData}</h3>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
