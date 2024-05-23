@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "React+Vite _Extension",
+    "version": "0.0.1",
+    "action":{
+        "default_popup": "index.html"
+    },
+    "permissions":[
+        "scripting"
+    ],
+    "host_permission":[
+        "http://*/*",
+        "https://*/*"
+    ],
+    "icons":{
+        "128":"logo.png"
+    }
+}
